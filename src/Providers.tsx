@@ -1,6 +1,7 @@
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
+import store from 'state'
 
 const Providers: React.FC = ({ children }) => {
   return (
