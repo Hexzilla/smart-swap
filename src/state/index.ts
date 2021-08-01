@@ -1,15 +1,11 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { save, load } from 'redux-localstorage-simple'
 import { useDispatch } from 'react-redux'
-
-const PERSISTED_KEYS: string[] = ['user', 'transactions', 'lists']
 
 const store = configureStore({
   devTools: process.env.NODE_ENV !== 'production',
   reducer: {
   },
-  middleware: [...getDefaultMiddleware({ thunk: true }), save({ states: PERSISTED_KEYS })],
-  preloadedState: load({ states: PERSISTED_KEYS }),
+  middleware: [...getDefaultMiddleware({ thunk: true })],
 })
 
 /**
