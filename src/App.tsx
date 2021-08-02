@@ -31,6 +31,7 @@ function App() {
       <Switch>
         <Route exact strict path="/" component={Home} />
         <Route exact strict path="/swap" component={Swap} />
+        <Route exact strict path="/chart" component={Swap} />
       </Switch>
     </Router>
   );
