@@ -5,7 +5,7 @@ import UnlockButton from 'components/UnlockButton'
 export default function Swap({ history }: RouteComponentProps) {
   return (
     <div>
-      Swap
+      Token Swap
       <UnlockButton></UnlockButton>
     </div>
   )
