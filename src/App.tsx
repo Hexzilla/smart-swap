@@ -18,7 +18,7 @@ function Home() {
           href="/swap"
           rel="noopener noreferrer"
         >
-          Learn React
+          Swap
         </a>
       </header>
     </div>
