@@ -10,6 +10,8 @@ import {
   WalletConnectConnector,
 } from '@web3-react/walletconnect-connector'
 import { connectorsByName } from 'utils/web3React'
+import { setupNetwork } from 'utils/wallet'
+import { profileClear } from 'state/profile'
 import { useAppDispatch } from 'state'
 
 const useAuth = () => {
@@ -17,8 +19,9 @@ const useAuth = () => {
   const { activate, deactivate } = useWeb3React()
 
   const login = useCallback(
-    (connectorID: ConnectorNames) => {
+    (connectorID: string) => {
       const connector = connectorsByName[connectorID]
+      console.log("login", connectorID, connector)
       if (connector) {
         activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {

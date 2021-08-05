@@ -1,8 +1,9 @@
-import React from 'react'
+import useAuth from 'hooks/useAuth'
 
 const UnlockButton = (props) => {
+  const { login, logout } = useAuth()
   const onPresentConnectModal = () => {
-    
+    login('injected')
   }
 
   return (
