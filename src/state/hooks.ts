@@ -23,3 +23,13 @@ export const useGetRounds = () => {
   }, {}) as { [key: string]: NodeRound }
 }
 
+export const useGetRound = (epoch: number) => {
+  const round = useSelector((state: State) => state.predictions.rounds[epoch])
+  return parseBigNumberObj<ReduxNodeRound, NodeRound>(round)
+}
+
+export const useGetSortedRounds = () => {
+  const roundData = useGetRounds()
+  return orderBy(Object.values(roundData), ['epoch'], ['asc'])
+}
+
