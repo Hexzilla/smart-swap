@@ -7,13 +7,15 @@ import state from 'state'
 
 export default function Swap({ history }: RouteComponentProps) {
   const { account } = useActiveWeb3React()
+  console.log("Account", account)
+
   return (
     <div>
       Token Swap
       { !account ? (
         <UnlockButton width="100%" />
       ) : (
-        <div>Swap</div>
+        <div>Start Swap</div>
       )}
     </div>
   )
