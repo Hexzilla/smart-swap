@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ProfileState } from 'state/types'
+import type { AppDispatch } from 'state'
+import getProfile, { GetProfileResponse } from './getProfile'
 
 const initialState: ProfileState = {
   isInitialized: false,
@@ -40,7 +42,7 @@ export const profileSlice = createSlice({
 })
 
 // Actions
-export const { profileFetchStart, profileFetchFailed, profileClear, addPoints } =
+export const { profileFetchStart, profileFetchSucceeded, profileFetchFailed, profileClear, addPoints } =
   profileSlice.actions
 
 // Thunks
