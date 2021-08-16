@@ -15,6 +15,16 @@ export const profileSlice = createSlice({
     profileFetchStart: (state) => {
       state.isLoading = true
     },
+    profileFetchSucceeded: (_state, action: PayloadAction<GetProfileResponse>) => {
+      const { profile, hasRegistered } = action.payload
+
+      return {
+        isInitialized: true,
+        isLoading: false,
+        hasRegistered,
+        data: profile,
+      }
+    },
     profileFetchFailed: (state) => {
       state.isLoading = false
       state.isInitialized = true
@@ -32,5 +42,17 @@ export const profileSlice = createSlice({
 // Actions
 export const { profileFetchStart, profileFetchFailed, profileClear, addPoints } =
   profileSlice.actions
+
+// Thunks
+// TODO: this should be an AsyncThunk
+export const fetchProfile = (address: string) => async (dispatch: AppDispatch) => {
+  try {
+    dispatch(profileFetchStart())
+    const response = await getProfile(address)
+    dispatch(profileFetchSucceeded(response))
+  } catch (error) {
+    dispatch(profileFetchFailed())
+  }
+}
 
 export default profileSlice.reducer
